@@ -2,6 +2,10 @@ ZSH_TMUX_AUTOSTART=true
 ZSH_TMUX_AUTOSTART_ONCE=true
 ZSH_TMUX_AUTOQUIT=true
 
+# Random Colour Script
+# Make sure to remove "pipes1", "pipes2", "pipes2-slim" colorscripts as it breaks p10k-instant-prompt
+/usr/bin/colorscript random
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -115,17 +119,20 @@ source $ZSH/oh-my-zsh.sh
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Colorize the ls output
-alias ls='ls -CF --color=auto'
-alias l='ls -CF --color=auto'
+alias ls='/usr/bin/lsd'
 
 # ls but almost all file
-alias la='ls -A --color=auto'
+alias la='ls -AF --color=auto'
  
 # Use a long listing format
-alias ll='ls -alF --color=auto'
- 
+alias ll='ls -alF --color=auto' 
+alias l='ls -F --color=auto'
+
+# Use a tree directory format
+alias lt='ls --tree --depth 2 --color=auto'
+
 # Show hidden files
-alias l.='ls -d .* --color=auto'
+alias l.='ls -dF .* --color=auto'
 
 # Colorize the grep command output for ease of use (good for log files)
 alias grep='grep --color=auto'
