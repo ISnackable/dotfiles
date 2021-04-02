@@ -46,6 +46,19 @@ keys.mousebuttons = gears.table.join(
     awful.button({ }, 5, awful.tag.viewprev)
 )
 
+keys.titlebar_buttons = gears.table.join(
+    awful.button({ }, 1, function()
+        local c = mouse.object_under_pointer()
+        client.focus = c
+        awful.mouse.client.move(c)
+    end),
+    awful.button({ }, 3, function()
+        local c = mouse.object_under_pointer()
+        client.focus = c
+        awful.mouse.client.resize(c)
+    end)
+)
+
 -- {{{ Key bindings
 keys.globalkeys = gears.table.join(
     awful.key({ superkey,           }, "s",      hotkeys_popup.show_help,
@@ -142,10 +155,12 @@ keys.globalkeys = gears.table.join(
                     history_path = awful.util.get_cache_dir() .. "/history_eval"
                   }
               end,
-              {description = "lua execute prompt", group = "awesome"}),
+              {description = "lua execute prompt", group = "awesome"})
+    --[[
     -- Menubar
     awful.key({ superkey }, "p", function() menubar.show() end,
               {description = "show the menubar", group = "launcher"})
+    ]]--
 )
 
 keys.clientkeys = gears.table.join(
@@ -254,6 +269,40 @@ keys.clientbuttons = gears.table.join(
         c:emit_signal("request::activate", "mouse_click", {raise = true})
         awful.mouse.client.resize(c)
     end)
+)
+
+keys.taglist_buttons = gears.table.join(
+    awful.button({ }, 1, function(t) t:view_only() end),
+    awful.button({ superkey }, 1, function(t)
+        if client.focus then
+            client.focus:move_to_tag(t)
+        end
+    end),
+    awful.button({ }, 3, awful.tag.viewtoggle),
+    awful.button({ superkey }, 3, function(t)
+        if client.focus then
+            client.focus:toggle_tag(t)
+        end
+    end),
+    awful.button({ }, 4, function(t) awful.tag.viewnext(t.screen) end),
+    awful.button({ }, 5, function(t) awful.tag.viewprev(t.screen) end)
+)
+
+keys.tasklist_buttons = gears.table.join(
+    awful.button({ }, 1, function (c)
+        if c == client.focus then
+            c.minimized = true
+        else
+            c:emit_signal(
+                "request::activate",
+                "tasklist",
+                {raise = true}
+            )
+        end
+    end),
+    awful.button({ }, 3, function () awful.menu.client_list({ theme = { width = 250 } }) end),
+    awful.button({ }, 4, function () awful.client.focus.byidx(1) end),
+    awful.button({ }, 5, function () awful.client.focus.byidx(-1) end)
 )
 
 root.keys(keys.globalkeys) -- Set keys
