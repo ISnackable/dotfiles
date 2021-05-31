@@ -61,6 +61,15 @@ theme.border_marked = theme.bg_very_light
 theme.rounded_corners = true
 theme.border_radius = dpi(6) -- set roundness of corners
 
+-- bar config
+--theme.tagnames = {  " ", " ", " ", " ", " ", " ", " ", " ", " ", " "  }
+theme.tagnames = { " DEV ", " WWW ", " SYS ", " DOC ", " VBOX ", " CHAT ", " MUS ", " VID ", " GFX " }
+
+theme.bar_position = "top"
+theme.bar_height = dpi(28)
+theme.bar_item_radius = dpi(10)
+theme.bar_item_padding = dpi(3)
+
 -- There are other variable sets
 -- overriding the default one when
 -- defined, the sets are:

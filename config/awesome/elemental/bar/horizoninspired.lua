@@ -2,8 +2,26 @@ local awful = require("awful")
 local gears = require("gears")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
+local dpi = require("beautiful.xresources").apply_dpi
 
 local keys = require("keys")
+
+local widget = function(inner_widget)
+    return wibox.widget {
+        widget = wibox.container.margin,
+        top = dpi(beautiful.bar_item_padding + 2), 
+        bottom = dpi(beautiful.bar_item_padding + 2),
+        left = dpi(6),
+        right = dpi(6),
+        {
+            inner_widget,
+            layout = wibox.layout.fixed.horizontal
+        }
+    }
+end
+
+-- Init widgets
+local battery_bar = require("noodle.battery_bar")
 
 -- Create a textclock widget
 mytextclock = wibox.widget.textclock("%A %B %d, %H:%M")
@@ -51,6 +69,7 @@ awful.screen.connect_for_each_screen(function(s)
             layout = wibox.layout.fixed.horizontal,
             mykeyboardlayout,
             wibox.widget.systray(),
+            widget(battery_bar),
             mytextclock,
             s.mylayoutbox,
         },

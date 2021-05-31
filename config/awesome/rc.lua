@@ -133,6 +133,12 @@ decorations.init(theme)
 -- Statusbar(s)
 require("elemental.bar."..theme)
 
+-- >> Daemons
+-- Most widgets that display system/external info depend on evil.
+-- Make sure to initialize it last in order to allow all widgets to connect to
+-- their needed evil signals.
+require("evil")
+
 -- Layouts
 -- ===================================================================
 -- Table of layouts to cover with awful.layout.inc, order matters.

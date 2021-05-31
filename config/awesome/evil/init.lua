@@ -1,0 +1,2 @@
+-- Monitoring
+require("evil.battery")
