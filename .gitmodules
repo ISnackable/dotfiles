@@ -1,0 +1,9 @@
+[submodule "config/awesome/modules/bling"]
+	path = config/awesome/modules/bling
+	url = https://github.com/BlingCorp/bling.git
+[submodule "config/nvim/NvChad"]
+	path = config/nvim/NvChad
+	url = https://github.com/NvChad/NvChad.git
+[submodule "config/emacs/doom-emacs"]
+	path = config/emacs/doom-emacs
+	url = https://github.com/hlissner/doom-emacs.git

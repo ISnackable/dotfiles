@@ -1,10 +1,9 @@
 ---------------------------
 -- Default awesome theme --
 ---------------------------
-local naughty = require("naughty")
+
 local theme_assets = require("beautiful.theme_assets")
 local xresources = require("beautiful.xresources")
-local xrdb = xresources.get_current_theme()
 local dpi = xresources.apply_dpi
 
 local gfs = require("gears.filesystem")
@@ -12,63 +11,30 @@ local themes_path = gfs.get_themes_dir()
 
 local theme = {}
 
-theme.font          = "Roboto Medium 9"
+theme.font          = "fira-code"
 
--- This is how to get other .Xresources values (beyond colors 0-15, or custom variables)
--- local cool_color = awesome.xrdb_get_value("", "color16")
-
-theme.bg_normal     = "#1c1e26"
-theme.bg_focus      = theme.bg_normal
-theme.bg_urgent     = theme.bg_normal
-theme.bg_minimize   = "#aaaaaa"
+-- Background
+theme.bg_normal = "#202020"
+theme.bg_focus = "#323e4a"
+theme.bg_urgent = "#181a1f"
+theme.bg_minimize = "#121212"
 theme.bg_systray    = theme.bg_normal
-theme.bg_light      = "#232530"
-theme.bg_very_light = "#2E303E"
-theme.bg_dark       = "#1A1C23" 
 
-theme.fg_normal     = "#dddddd"
-theme.fg_dark       = "#cccccc"
-theme.fg_focus      = "#ffffff"
-theme.fg_urgent     = "#ffffff"
-theme.fg_minimize   = "#ffffff"
+-- Foreground
+theme.fg_normal = "#f8f8f0"
+theme.fg_focus = "#d7dae0"
+theme.fg_urgent = "#f8f8f0"
+theme.fg_minimize = "#f8f8f0"
 
-theme.highlight = "#F43E5C"
-theme.highlight_alt = "#B877DB"
+-- Corner Radius
+theme.corner_radius = dpi(20)
 
-theme.misc1 = "#6C6F93"
-theme.misc2 = "#2f3240"
-theme.transparent = "'#282A3600"
-
--- terminal colors
-theme.red = x.color1
-theme.red_light = x.color9
-theme.green = x.color2
-theme.green_light = x.color10
-theme.yellow = x.color3
-theme.yellow_light = x.color11
-theme.blue = x.color4
-theme.blue_light = x.color12
-theme.magenta = x.color5
-theme.magenta_light = x.color13
-theme.cyan = x.color6
-theme.cyan_light = x.color14
-
-theme.useless_gap   = dpi(8)
+-- Window Borders
+theme.useless_gap   = dpi(5)
 theme.border_width  = dpi(0)
-theme.border_normal = theme.bg_very_light
-theme.border_focus  = theme.bg_very_light
-theme.border_marked = theme.bg_very_light
-theme.rounded_corners = true
-theme.border_radius = dpi(6) -- set roundness of corners
-
--- bar config
---theme.tagnames = {  " ", " ", " ", " ", " ", " ", " ", " ", " ", " "  }
-theme.tagnames = { " DEV ", " WWW ", " SYS ", " DOC ", " VBOX ", " CHAT ", " MUS ", " VID ", " GFX " }
-
-theme.bar_position = "top"
-theme.bar_height = dpi(28)
-theme.bar_item_radius = dpi(10)
-theme.bar_item_padding = dpi(3)
+theme.border_normal = theme.bg_normal
+theme.border_focus = theme.fg_focus
+theme.border_marked = theme.fg_urgent
 
 -- There are other variable sets
 -- overriding the default one when
@@ -103,7 +69,7 @@ theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
 -- menu_[border_color|border_width]
 theme.menu_submenu_icon = themes_path.."default/submenu.png"
 theme.menu_height = dpi(15)
-theme.menu_width  = dpi(100)
+theme.menu_width  = dpi(150)
 
 -- You can add as many variables as
 -- you wish and access them by using
@@ -137,7 +103,7 @@ theme.titlebar_maximized_button_focus_inactive  = themes_path.."default/titlebar
 theme.titlebar_maximized_button_normal_active = themes_path.."default/titlebar/maximized_normal_active.png"
 theme.titlebar_maximized_button_focus_active  = themes_path.."default/titlebar/maximized_focus_active.png"
 
-theme.wallpaper = themes_path.."default/background.png"
+theme.wallpaper = gfs.get_configuration_dir() .. "themes/background.jpg"
 
 -- You can use your own layout icons like this:
 theme.layout_fairh = themes_path.."default/layouts/fairhw.png"
