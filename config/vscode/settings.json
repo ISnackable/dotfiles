@@ -5,5 +5,10 @@
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.guides.bracketPairs": true,
-  "editor.bracketPairColorization.enabled": true
+  "editor.bracketPairColorization.enabled": true,
+  "redhat.telemetry.enabled": false,
+  "editor.cursorSmoothCaretAnimation": true,
+  "editor.cursorBlinking": "phase",
+  "editor.smoothScrolling": true,
+  "window.title": "${dirty}${activeEditorShort}${separator}${rootName}"
 }
