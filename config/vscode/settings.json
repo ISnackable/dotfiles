@@ -10,5 +10,6 @@
   "editor.cursorSmoothCaretAnimation": true,
   "editor.cursorBlinking": "phase",
   "editor.smoothScrolling": true,
-  "window.title": "${dirty}${activeEditorShort}${separator}${rootName}"
+  "window.title": "${dirty}${activeEditorShort}${separator}${rootName}",
+  "telemetry.telemetryLevel": "off"
 }
